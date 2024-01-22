@@ -19,7 +19,7 @@ public class ProductRepository implements IProductRepository {
         ArrayList<Product> list = getAll();
         System.out.println(get(product.getProductId())!= null);
 
-        if (get(product.getProductId())!= null ) {
+        if (get(product.getProductId())== null ) {
             System.out.println(product.toCsv());
             file.writeLine(product.toCsv(),true);
         }
@@ -29,7 +29,6 @@ public class ProductRepository implements IProductRepository {
     public void delete(String productId) {
         FileIo file = new FileIo(path);
         ArrayList<Product> list = getAll();
-        Product product = get(productId);
 
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getProductId().equals(productId)) {
